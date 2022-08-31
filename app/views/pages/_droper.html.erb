@@ -33,10 +33,9 @@
               <% page.images.each do |picture| %>
                 <tr class="folder">
                 <% if picture.image? %>
-                
                     <td  style="font-size:12px;"><%= image_tag(picture, style: "width: 25px; height: 25px;") %> <%= link_to picture.filename, picture %></td>
-                  <% elsif picture.video? %>
-                    <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
+                  <% elsif picture.filename.to_s.split('.').last === "pdf" %>
+                    <td  style="font-size:12px;"><i class="bi bi-filetype-pdf" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
                   <% else %>
                     <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
                   <% end %>
