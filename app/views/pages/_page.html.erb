@@ -1,22 +1,23 @@
-  <% @pages.each do |page| %>
-  <% if page.images.attached? %>
-    <% page.images.each do |attachment| %>
-      <br>
-      <% if attachment.image? %>
-        <%= image_tag attachment %>
-      <% elsif attachment.audio? %>
-        <audio controls>
-          <source src="<%= rails_blob_url(attachment) %>" type="<%= attachment.content_type %>"/>
-        </audio>
-      <% elsif attachment.video? %>
-        <video controls width="480">
-          <source src="<%= rails_blob_url(attachment) %>" type="<%= attachment.content_type %>"/>
-        </video>
-      <% else %>
-        <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
-      <% end %>
-      <br>
-    <% end %>
-  <% end %>
 
-<% end %>
+
+  <% if page.images.attached? %>
+
+    <% page.images.each do |picture| %>
+
+      <% if picture.image? %>
+        <%= link_to image_tag(picture, class: "img_upload"), picture %>
+      <% elsif picture.video? %>
+        <%= link_to picture.filename, picture %>
+      <% else %>
+        <%= link_to picture.filename, picture %>
+        <%= link_to "Download",  rails_blob_path(picture, disposition: "attachment")%>
+      
+      
+      <% end %>
+
+      <%= button_to "Destroy this page", page, method: :delete %>
+
+    <% end %>
+
+  <% end %>
+    
