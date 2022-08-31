@@ -78,3 +78,5 @@ gem "devise", "~> 4.8"
 # gem "poppler", "~> 3.5"
 
 
+
+gem "jquery-rails", "~> 4.5"

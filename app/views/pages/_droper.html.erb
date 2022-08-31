@@ -1,0 +1,80 @@
+<div class="aziz">
+  <header>
+    <i class="ion-briefcase"></i>
+    <a>Try Dropbox Business</a>
+    <a><i class="ion-ios-bell"></i></a>
+    <i class="ion-gear-b"></i>
+    <a>User Name</a>
+  </header>
+  <div class="wrapper">
+    <main class="working-area">
+      <section class="folder-top">
+        <div class="location">
+          <i class="bi bi-folder-fill"></i>
+          <h1>Location</h1>
+          <h1>Folder Name</h1>
+        </div>
+        <div class="icon-menu">
+          <i class="ion-document"></i>
+          <i class="ion-folder"></i>
+          <i class="ion-trash-a"></i>
+          <input type="text" name="search" value="Search">
+        </div>
+      </section>
+
+      <section class="files-container">
+        <table><br>
+          <tr class="file-labels">
+            <button class="btn btn-primary btn-sm newChat-modal-toggle " type="button">
+              Upload file
+            </button>
+            <button class="btn btn-primary btn-sm newChat-modal-toggle maga" type="button">
+              Create Folder
+            </button><hr>
+          </tr>
+            
+   
+       
+          
+       
+          
+        
+          
+      
+
+<% @pages.each do |page| %>
+ <% if page.images.attached? %>
+      <% page.images.each do |picture| %>
+ <% if picture.image? %>
+          <tr class="folder">
+            <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
+     <% elsif picture.video? %>
+            <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
+            <% else %>
+            <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
+            <% end %>
+            <td><%= link_to "Download",  rails_blob_path(picture, disposition: "attachment"), class: "btn btn-primary" %></td>
+            <td><%= button_to "Destroy", page, method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        
+      <% end %>
+    <% end %>
+  <% end %>
+  
+        </table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<%= render "form" %>
+
+<script type='text/javascript'>
+  window.onload = function() {
+  $('.newChat-modal-toggle').on('click', function(e) {
+    e.preventDefault();
+    $('.newChat-modal').toggleClass('is-visible');
+  });
+  }
+</script>

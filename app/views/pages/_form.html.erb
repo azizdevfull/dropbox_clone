@@ -1,31 +1,29 @@
-<%= form_with(model: page) do |form| %>
-  <% if page.errors.any? %>
+<%= form_with(model: @page) do |form| %>
+  <% if @page.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
       <ul>
-        <% page.errors.each do |error| %>
+        <% @page.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :home, style: "display: block" %>
-    <%= form.text_field :home %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true, direct_upload: true %>
-  </div>
-
-  <div>
+<div class="newChat-modal">
+  <div class="newChat-modal-wrapper newChat-modal-transition">
+    <div class="newChat-modal-header">
+      <h2 class="newChat-modal-heading">Upload file</h2>
+    </div>
+    <div class="newChat-modal-body">
+      <div class="newChat-modal-content">
+        <%= form.file_field :images, multiple: true, direct_upload: true %>
     <%= form.text_field :user_id, id: :pages_user_id, value: current_user.id, type: :hidden %>
+         <%= form.submit "Upload", class: " newChat-modal-create-btn" %>
+        <button class="newChat-modal-toggle newChat-modal-cancel-btn">Cancel</button>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

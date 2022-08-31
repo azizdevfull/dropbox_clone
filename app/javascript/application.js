@@ -3,3 +3,12 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+import jQuery from "jquery";
+
+window.$ = window.jQuery = jQuery;
+
+console.log($);
+
+
+// window.jQuery = jquery
+// window.$ = jquery
