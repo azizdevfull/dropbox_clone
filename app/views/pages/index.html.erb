@@ -1,10 +1,6 @@
 <% if current_user %>
   <%= stylesheet_link_tag "pages"  %>
   <%= render 'droper' %>
-  <%= current_user.email %>
-  
-
-  <%= link_to "New page", new_page_path %>
 <% else %>
   <%= link_to "Sign up", new_user_registration_path %>
   <%= link_to "Log in", new_user_sessions_path %>
