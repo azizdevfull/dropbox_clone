@@ -80,3 +80,4 @@ gem "devise", "~> 4.8"
 
 
 gem "jquery-rails", "~> 4.5"
+gem "aws-sdk-s3", require: false
