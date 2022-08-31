@@ -31,8 +31,8 @@
           <% @pages.each do |page| %>
             <% if page.images.attached? %>
               <% page.images.each do |picture| %>
+                <tr class="folder">
                 <% if picture.image? %>
-                  <tr class="folder">
                     <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
                   <% elsif picture.video? %>
                     <td  style="font-size:12px;"><i class="bi bi-folder" style="font-size:4em;"></i> <%= link_to picture.filename, picture %></td>
