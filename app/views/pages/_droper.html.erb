@@ -1,14 +1,14 @@
 <div class="aziz">
-  <header>
+  <%# <header>
     <i class="ion-briefcase"></i>
     <a>Try Dropbox Business</a>
     <a><i class="ion-ios-bell"></i></a>
     <i class="ion-gear-b"></i>
     <a>User Name</a>
-  </header>
+  </header> %>
   <div class="wrapper">
     <main class="working-area">
-      <section class="folder-top">
+      <%# <section class="folder-top">
         <div class="location">
           <i class="bi bi-folder-fill"></i>
           <h1>Location</h1>
@@ -20,12 +20,12 @@
           <i class="ion-trash-a"></i>
           <input type="text" name="search" value="Search">
         </div>
-      </section>
+      </section> %>
       <section class="files-container">
         <table><br>
           <tr class="file-labels">
             <button class="btn btn-primary btn-sm maga" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Upload file</button>
-            <button class="btn btn-primary btn-sm maga" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Create folder</button>
+            <%# <button class="btn btn-primary btn-sm maga" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Create folder</button> %>
             <hr>
           </tr>
           <% @pages.each do |page| %>
@@ -42,6 +42,13 @@
                   <td  style="font-size:12px;"><i  class="bi bi-file-earmark-zip" style="font-size:2em;"></i> <%= link_to picture.filename, picture %></td>
                   <% elsif picture.filename.to_s.split('.').last === "csv" %>
                   <td  style="font-size:12px;"><i  class="bi bi-filetype-csv" style="font-size:2em;"></i> <%= link_to picture.filename, picture %></td>
+                   <% elsif picture.audio? %>
+                  <td  style="font-size:12px;">
+                  <i class="bi bi-file-earmark-music" style="font-size:2em;"></i>
+                      <audio controls style="height: 20px;">
+                    <source src=" <%= rails_blob_url(picture, disposition: "attachment") %>" type="audio/mpeg" style="length: 10px;"/>
+                  </audio>
+                  </td>
                   <% elsif picture.video? %>
                     <td  style="font-size:12px;">
                      <%= video_tag url_for(picture), controls: true, style:"width: 25px; height: 25px;" %> <%= link_to picture.filename, picture %>
