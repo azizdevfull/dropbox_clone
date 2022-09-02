@@ -29,6 +29,8 @@
             <hr>
           </tr>
           <% @pages.each do |page| %>
+
+          <% if page.user.id == current_user.id %>
             <% if page.images.attached? %>
               <% page.images.each do |picture| %>
                 <tr class="folder">
@@ -48,6 +50,7 @@
                 </tr>
               <% end %>
             <% end %>
+          <% end %>
           <% end %>
         </table>
       </section>
