@@ -38,6 +38,8 @@
                     <td  style="font-size:12px;"><%= image_tag(picture, style: "width: 25px; height: 25px;") %> <%= link_to picture.filename, picture %></td>
                   <% elsif picture.filename.to_s.split('.').last === "pdf" %>
                     <td  style="font-size:12px;"><i class="bi bi-filetype-pdf" style="font-size:2em;"></i> <%= link_to picture.filename, picture %></td>
+                  <% elsif picture.filename.to_s.split('.').last === "pdf" %>
+                  <td  style="font-size:12px;"><i  class="bi bi-file-earmark-zip" style="font-size:2em;"></i> <%= link_to picture.filename, picture %></td>
                   <% elsif picture.video? %>
                     <td  style="font-size:12px;">
                      <%= video_tag url_for(picture), controls: true, style:"width: 25px; height: 25px;" %> <%= link_to picture.filename, picture %>
